@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            margin: 0;
+        }
+
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .container {
+            padding: 40px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .btn-logout {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .btn-home {
+            background: #3498db;
+            color: white;
+        }
+
+        .info {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h2>Admin Dashboard</h2>
+
+<form action="/logout" method="POST">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <button type="submit">Logout</button>
+</form>
+</header>
+
+<div class="container">
+    <div class="card">
+        <h3>Welcome, <%= user.username %> 👑</h3>
+
+        <div class="info">
+            <p><strong>User ID:</strong> <%= user._id %></p>
+            <p><strong>Email:</strong> <%= user.useremail %></p>
+            <p><strong>Role:</strong> <%= user.role %></p>
+        </div>
+
+        <br>
+
+        <a href="/home" class="btn btn-home">Go to Home</a>
+    </div>
+</div>
+
+</body>
+</html>

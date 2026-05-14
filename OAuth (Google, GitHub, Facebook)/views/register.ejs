@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<style>
+    .social-login {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.social-login p {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.social-btn {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    width: 80%;
+    text-decoration: none;
+    color: white;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.google {
+    background-color: #db4437;
+}
+
+.facebook {
+    background-color: #3b5998;
+}
+
+.github {
+    background-color: #24292e;
+}
+.social-btn:hover {
+    opacity: 0.85;
+}
+</style>
+<body>
+
+<div class="login-container">
+    <h2>Register</h2>
+
+    <% if (typeof error !== "undefined") { %>
+        <p class="error"><%= error %></p>
+    <% } %>
+
+    <form action="/register" method="POST">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+        <div class="input-group">
+            <label>Full Name</label>
+            <input type="text" name="username" placeholder="Enter full name" required>
+        </div>
+
+        <div class="input-group">
+            <label>Email</label>
+            <input type="email" name="useremail" placeholder="Enter email" required>
+        </div>
+
+        <div class="input-group">
+            <label>Password</label>
+            <input type="password" name="userpassword" placeholder="Create password" required>
+        </div>
+
+        <div class="input-group">
+            <label>Confirm Password</label>
+            <input type="password" name="confirmPassword" placeholder="Confirm password" required>
+        </div>
+
+        <button type="submit">Register</button>
+
+        <p class="text">
+            Already have an account? <a href="/login">Login</a>
+        </p>
+        <div class="social-login">
+    <p>Or login with</p>
+
+    <a href="/auth/google" class="social-btn google">
+        <i class="fa-brands fa-google"></i> Login with Google
+    </a>
+
+    <a href="/auth/facebook" class="social-btn facebook">
+        <i class="fa-brands fa-facebook-f"></i> Login with Facebook
+    </a>
+
+        <a href="/auth/github" class="social-btn github">
+        <i class="fa-brands fa-github"></i> Continue with GitHub
+    </a>
+</div>
+    </form>
+</div>
+
+</body>
+</html>
